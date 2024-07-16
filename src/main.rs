@@ -1,6 +1,6 @@
 use rssh_client::get_config;
 use rssh_client::network::connect_to_server;
-use rssh_client::{send_version, receive_version};
+use rssh_client::{send_version, receive_version, negotiate_algorithms};
 
 use std::process;
 
@@ -22,6 +22,8 @@ fn main()  -> Result<(), Box<dyn std::error::Error>> {
     let server_version = receive_version(&mut stream)?;
 
     println!("Server Version: {}", server_version);
+
+    negotiate_algorithms(&mut stream)?;
 
     Ok(())
 }
