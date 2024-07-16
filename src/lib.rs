@@ -1,4 +1,7 @@
 pub mod network;
+pub mod handshake;
+
+pub use handshake::{send_version, receive_version};
 
 use std::env;
 use std::net::{Ipv4Addr, AddrParseError};
